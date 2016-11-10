@@ -6,7 +6,7 @@
  <meta charset="utf-8" />
 
   <!-- importing firebase -->
-  <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
 
   <!-- importing CodeMirror -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
@@ -34,11 +34,13 @@
     //initialize firebase with apikey, authdomain, and database url fields
     function init() {
     
-    var config = { //stores the initialization information needed
-        apiKey : "",
-	authDomain : "",
-	databaseURl: "",
-    };
+    var config = {
+    apiKey: "AIzaSyCRWZ8wqPhNIMJFKbiOhKov9Ay9JpL894o",
+    authDomain: "cs252-6d16e.firebaseapp.com",
+    databaseURL: "https://cs252-6d16e.firebaseio.com",
+    storageBucket: "cs252-6d16e.appspot.com",
+    messagingSenderId: "493111545692"
+  };
 
     //initialise command
     firebase.initializeApp(config);
