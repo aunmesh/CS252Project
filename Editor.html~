@@ -21,19 +21,6 @@
   <link rel="stylesheet" href="firepad-userlist.css" />
 
   <!-- Do styling here later -->
-   <style>
-    html { height: 100%; }
-    body { margin: 0; height: 100%; }
-    /* Height / width / positioning can be customized for your use case.
-       For demo purposes, we make the user list 175px and firepad fill the rest of the page. */
-    #userlist {
-      position: absolute; left: 0; top: 0; bottom: 0; height: auto;
-      width: 175px;
-    }
-    #editor {
-      position: absolute; left: 175px; top: 0; bottom: 0; right: 0; height: auto;
-    }
-  </style>
 
 </head>
 
@@ -41,49 +28,20 @@
 
   <!-- define section for userlist-->
   <div id="userlist"></div>
-  <div id="editor"></div>
+  <div id="firepad"></div>
 
   <script>
     //initialize firebase with apikey, authdomain, and database url fields
     function init() {
     
-    var config = {
-    apiKey: "AIzaSyCRWZ8wqPhNIMJFKbiOhKov9Ay9JpL894o",
-    authDomain: "cs252-6d16e.firebaseapp.com",
-    databaseURL: "https://cs252-6d16e.firebaseio.com",
-    storageBucket: "cs252-6d16e.appspot.com",
-    messagingSenderId: "493111545692"
-  };
+    var config = { //stores the initialization information needed
+        apiKey : "",
+	authDomain : "",
+	databaseURl: "",
+    };
 
     //initialise command
     firebase.initializeApp(config);
-    var padReference = getHashReference();
-    var TextEditor = CodeMirror(document.getElementById('editor'), {linewrapping: true});
-    var userId = Math.floor(Math.random() * 9999999999).toString();
-    var pad = Firepad.fromCodeMirror(padReference, TextEditor,
-    { richTextToolbar: true, richTextShortcuts: true, userId: userId});
-    var firepadUserList = FirepadUserList.fromDiv(padReference.child('users'),
-          document.getElementById('userlist'), userId);
-    pad.on('ready', function() {
-        if (pad.isHistoryEmpty()) {
-          pad.setText('Start Typing');
-        }
-      });
-    }
-    function getHashReference() {
-      var ref = firebase.database().ref();
-      var hash = window.location.hash.replace(/#/g, '');
-      if (hash) {
-        ref = ref.child(hash);
-      } else {
-        ref = ref.push(); // generate unique location.
-        window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
-      }
-      if (typeof console !== 'undefined') {
-        console.log('Firebase data: ', ref.toString());
-      }
-      return ref;
-
 
     //statement to include database ref firepad ref
     var firepadRef = getRef();
@@ -102,10 +60,11 @@
 	//include later when userlist script is built
 
 
+
     //// Initialize contents.
     firepad.on('ready', function() {
       if (firepad.isHistoryEmpty()) {
-        firepad.setText('Collaborative Editing with user list');
+        firepad.setText('Check out the user list to the left!');
       }
     });
   }
