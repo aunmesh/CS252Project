@@ -163,7 +163,7 @@ limitations under the License.
 
           //redirect now
           //window.location = "Editor.html";
-          window.open("Editor.html", "_blank");
+          var editorhandle = window.open("Editor.html", "_blank");
           var displayName = user.displayName;
           var email = user.email;
           var emailVerified = user.emailVerified;
@@ -182,6 +182,7 @@ limitations under the License.
         } else {
           // User is signed out.
           // [START_EXCLUDE silent]
+          //editorhandle.close();
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
           document.getElementById('quickstart-sign-in').textContent = 'Sign in';
           document.getElementById('quickstart-account-details').textContent = 'null';
