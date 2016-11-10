@@ -60,10 +60,11 @@
 	//include later when userlist script is built
 
 
+
     //// Initialize contents.
     firepad.on('ready', function() {
       if (firepad.isHistoryEmpty()) {
-        firepad.setText('Collaborative Editing with user list');
+        firepad.setText('Check out the user list to the left!');
       }
     });
   }
