@@ -6,7 +6,7 @@
  <meta charset="utf-8" />
 
   <!-- importing firebase -->
-  <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
 
   <!-- importing CodeMirror -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
@@ -21,6 +21,19 @@
   <link rel="stylesheet" href="firepad-userlist.css" />
 
   <!-- Do styling here later -->
+   <style>
+    html { height: 100%; }
+    body { margin: 0; height: 100%; }
+    /* Height / width / positioning can be customized for your use case.
+       For demo purposes, we make the user list 175px and firepad fill the rest of the page. */
+    #userlist {
+      position: absolute; left: 0; top: 0; bottom: 0; height: auto;
+      width: 175px;
+    }
+    #firepad {
+      position: absolute; left: 175px; top: 0; bottom: 0; right: 0; height: auto;
+    }
+  </style>
 
 </head>
 
@@ -47,7 +60,7 @@
     var padReference = getHashReference();
     var TextEditor = CodeMirror(document.getElementById('editor'), {linewrapping: true});
     var userId = Math.floor(Math.random() * 9999999999).toString();
-    var pad = Firepad.fromCodeMirror(padReference, codeMirror,
+    var pad = Firepad.fromCodeMirror(padReference, TextEditor,
     { richTextToolbar: true, richTextShortcuts: true, userId: userId});
     var firepadUserList = FirepadUserList.fromDiv(padReference.child('users'),
           document.getElementById('userlist'), userId);
@@ -70,7 +83,6 @@
         console.log('Firebase data: ', ref.toString());
       }
       return ref;
-    }
 
 
 
