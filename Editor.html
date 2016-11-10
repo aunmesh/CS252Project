@@ -5,7 +5,6 @@
 <head>
  <meta charset="utf-8" />
 
-
   <!-- importing firebase -->
   <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
 
@@ -24,4 +23,33 @@
   <!-- Do styling here later -->
 
 </head>
+
+<body onload="init()">
+
+  <!-- define section for userlist-->
+  <div id="userlist"></div>
+  <div id="firepad"></div>
+
+  <script>
+    //initialize firebase with apikey, authdomain, and database url fields
+    function init() {
+    
+    var config = { //stores the initialization information needed
+        apiKey : "",
+	authDomain : "",
+	databaseURl: "",
+    };
+
+    //initialise command
+    firebase.initializeApp(config);
+
+
+  }
+  </script>
+
+</body>
+</html>
+
+    
+
 
